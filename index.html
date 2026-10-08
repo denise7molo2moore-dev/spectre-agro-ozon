@@ -1,0 +1,198 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Spectre Agro на Ozon</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;700&family=Golos+Text:wght@400;500;600&family=JetBrains+Mono:wght@400;600&display=swap">
+<style>
+/* Layout: одна колонка отчёта ~880px, таблицы в своих скролл-контейнерах, цифры моноширинным */
+:root{
+  --bg:#f3f5f1; --surface:#ffffff; --fg:#1d2420; --muted:#5d6a62; --line:#d9dfd8;
+  --accent:#1f6b47; --accent-soft:#e1efe6; --warn:#a86a12; --warn-soft:#f6ecd9; --bad:#9b3a2e; --bad-soft:#f5e3df;
+  --display:"Unbounded",system-ui,sans-serif; --body:"Golos Text",system-ui,-apple-system,"Segoe UI",sans-serif; --mono:"JetBrains Mono",ui-monospace,Consolas,monospace;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#141916; --surface:#1c231f; --fg:#e4ebe6; --muted:#9aa89f; --line:#2f3a33;
+  --accent:#5fc28f; --accent-soft:#1f3529; --warn:#e0a54a; --warn-soft:#3a2e1a; --bad:#e2806f; --bad-soft:#3b2420; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#141916; --surface:#1c231f; --fg:#e4ebe6; --muted:#9aa89f; --line:#2f3a33;
+  --accent:#5fc28f; --accent-soft:#1f3529; --warn:#e0a54a; --warn-soft:#3a2e1a; --bad:#e2806f; --bad-soft:#3b2420; color-scheme:dark}
+body{background:var(--bg);color:var(--fg);font:15px/1.6 var(--body)}
+.wrap{max-width:880px;margin:0 auto;padding-inline:16px;padding-block:32px 64px;display:grid;gap:40px}
+h1,h2{font-family:var(--display);text-wrap:balance;margin:0;line-height:1.2}
+h1{font-size:clamp(24px,4.5vw,34px);font-weight:700}
+h2{font-size:19px;font-weight:500}
+h3{font-size:15px;margin:0 0 4px;font-weight:600}
+p{margin:0;max-width:68ch}
+.eyebrow{font:600 11px/1 var(--body);letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+section{display:grid;gap:14px;min-width:0}
+.lead{font-size:17px;color:var(--fg)}
+.muted{color:var(--muted)}
+.num{font-family:var(--mono);font-variant-numeric:tabular-nums}
+.verdict{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:20px;display:grid;gap:12px}
+.verdict strong{color:var(--accent)}
+.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:12px}
+.kpi{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:14px;display:grid;gap:4px}
+.kpi .v{font:600 22px/1.1 var(--mono)}
+.kpi .l{font-size:13px;color:var(--muted)}
+.scroll{overflow-x:auto;border:1px solid var(--line);border-radius:8px;background:var(--surface)}
+table{border-collapse:collapse;width:100%;font-size:13.5px}
+th,td{padding:9px 12px;text-align:left;vertical-align:top;border-bottom:1px solid var(--line)}
+th{font-weight:600;font-size:12px;color:var(--muted);background:var(--bg);white-space:nowrap}
+tr:last-child td{border-bottom:0}
+td.r,th.r{text-align:right}
+.pill{display:inline-block;padding:2px 8px;border-radius:99px;font-size:12px;font-weight:600;white-space:nowrap}
+.go{background:var(--accent-soft);color:var(--accent)}
+.maybe{background:var(--warn-soft);color:var(--warn)}
+.no{background:var(--bad-soft);color:var(--bad)}
+.bars{display:grid;gap:8px}
+.bar{display:grid;grid-template-columns:minmax(120px,210px) 1fr minmax(64px,auto);gap:10px;align-items:center;font-size:13.5px}
+.bar .track{height:14px;background:var(--bg);border-radius:3px;overflow:hidden}
+.bar .fill{height:100%;background:var(--accent);border-radius:3px}
+.bar .fill.w{background:var(--warn)}
+.bar .fill.n{background:var(--bad)}
+.bar .v{font-family:var(--mono);text-align:right}
+@media (max-width:520px){.bar{grid-template-columns:1fr auto}.bar .track{grid-column:1/-1;order:3}}
+ul{margin:0;padding-left:20px;display:grid;gap:6px}
+li{max-width:70ch}
+.cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px}
+.box{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:16px;display:grid;gap:8px;min-width:0}
+.foot{font-size:13px;color:var(--muted);display:grid;gap:6px}
+</style>
+</head>
+<body>
+
+<div class="wrap">
+
+<header style="display:grid;gap:10px">
+  <div class="eyebrow">Spectre Agro · выход на Ozon · данные SellMonitor на 07.10.2026</div>
+  <h1>Spectre Agro на Ozon</h1>
+  <p class="lead">Разбор 20 товаров из каталога UDS по нишам Ozon: объём, динамика, лидеры, цены, реальная доля и оборот.</p>
+</header>
+
+<section class="verdict">
+  <div class="eyebrow">Вывод</div>
+  <p><strong>Заходить стоит, но не со всем каталогом и не в текущих фасовках.</strong> На Ozon покупает частное подворье и малые фермы (100 мл – 10 кг, чек 400–3 500 ₽). Мешки по 25 кг, кубы по 1000 л и цены по курсу евро там не продаются.</p>
+  <p>Есть 8 позиций, под которые на Ozon есть живой спрос. С ними базовый сценарий даёт <strong class="num">≈ 8–9 млн ₽</strong> оборота в год (около <span class="num">0,7 млн ₽</span> в месяц в среднем, летом больше). Осторожный сценарий даёт около <span class="num">4 млн</span>, оптимистичный около <span class="num">16 млн ₽</span>.</p>
+  <p>Семь позиций (холин, бетаин, ферменты, все три СпектроБака, эмульгатор) лучше оставить в B2B: на Ozon у них практически нет спроса.</p>
+</section>
+
+<section>
+  <h2>Рынок в цифрах</h2>
+  <div class="kpis">
+    <div class="kpi"><span class="v">≈1,7 млрд ₽</span><span class="l">в год: «Корма и добавки для птицеводства и животноводства» на Ozon, рост около 20% за 11 мес.</span></div>
+    <div class="kpi"><span class="v">337 млн ₽</span><span class="l">в год: «Корма для коров», 5 643 товара, средний чек 1 760 ₽</span></div>
+    <div class="kpi"><span class="v">×2</span><span class="l">«Ветеринарные товары для с/х»: с 9 до 19–24 млн ₽ в месяц за год</span></div>
+    <div class="kpi"><span class="v">≈79 млн ₽</span><span class="l">в год: сумма узких ниш, прямо подходящих нашим товарам, без бытовых инсектицидов</span></div>
+  </div>
+</section>
+
+<section>
+  <h2>Объём ниш за 12 месяцев</h2>
+  <p class="muted">Выручка всех продавцов Ozon (FBO+FBS) по товарам-аналогам, млн ₽. Шкала обрезана на 20 млн. Ниша циперметрина намного больше, её показываем отдельно.</p>
+  <div class="bars">
+    <div class="bar"><span>Циперметрин (Стоп-Инсект Pro)</span><div class="track"><div class="fill" style="width:100%"></div></div><span class="v">405 ▸</span></div>
+    <div class="bar"><span>Дезинфекция с/х (СпектроДез)</span><div class="track"><div class="fill" style="width:93%"></div></div><span class="v">18,6</span></div>
+    <div class="bar"><span>Пробиотики с/х (Ликви-, Биоспектр)</span><div class="track"><div class="fill" style="width:75.5%"></div></div><span class="v">15,1</span></div>
+    <div class="bar"><span>Приманки от мух (Стоп-Инсект Флай)</span><div class="track"><div class="fill" style="width:60.5%"></div></div><span class="v">12,1</span></div>
+    <div class="bar"><span>Энергетики от кетоза (Энерджи Микс)</span><div class="track"><div class="fill w" style="width:58%"></div></div><span class="v">11,6</span></div>
+    <div class="bar"><span>Электролиты, антистресс (Аэро)</span><div class="track"><div class="fill w" style="width:53.5%"></div></div><span class="v">10,7</span></div>
+    <div class="bar"><span>Кормовые дрожжи (Биосприн +)</span><div class="track"><div class="fill w" style="width:43.5%"></div></div><span class="v">8,7</span></div>
+    <div class="bar"><span>Подкислители (СпектроЦид Ультра)</span><div class="track"><div class="fill" style="width:7.5%"></div></div><span class="v">1,5</span></div>
+    <div class="bar"><span>Холин, бетаин, гепатопротекторы</span><div class="track"><div class="fill n" style="width:4.5%"></div></div><span class="v">0,9</span></div>
+    <div class="bar"><span>Ферменты (TechnoZyme)</span><div class="track"><div class="fill n" style="width:3.5%"></div></div><span class="v">0,7</span></div>
+    <div class="bar"><span>Закваски для силоса (СпектроБак)</span><div class="track"><div class="fill n" style="width:1.5%"></div></div><span class="v">0,3</span></div>
+  </div>
+</section>
+
+<section>
+  <h2>Разбор по товарам</h2>
+  <div class="scroll">
+  <table>
+    <thead><tr><th>Наш товар</th><th>Ниша на Ozon</th><th class="r">Ниша, млн ₽/год</th><th>Динамика</th><th>Лидеры и доли</th><th>Цены лидеров</th><th>Наша цена (UDS)</th><th>Решение</th></tr></thead>
+    <tbody>
+    <tr><td>Ликвиспорин, Ликвибак, Биоспектр 2Б, BioPlus YC</td><td>Пробиотики для с/х животных и птицы</td><td class="r num">15,1</td><td>растёт: 0,7 → 1,4 млн/мес (×2 за 11 мес)</td><td>Horse-Bio 20%, ТД Малахит (Ветоспорин-Ж) 13%, Biolatic 9%, Евросиб (PolloVivo) 7%. Топ-5 = 33%, рынок не монополизирован</td><td class="num">100 мл — 399 ₽; 500 г — 636–1 288 ₽; 5 кг — 1 608 ₽</td><td class="num">950 ₽/л; 2 200 ₽/кг</td><td><span class="pill go">Заходить, №1</span></td></tr>
+    <tr><td>СпектроДез Окси</td><td>Дезинфекция помещений для птицы и скота</td><td class="r num">18,6</td><td>растёт: 1,1 → 2,2 млн/мес (×2)</td><td>Подворье без проблем 16% (йодные шашки), СИРИУС 14% (с апреля 2026, уже 2 млн), Любовь и голуби 13%, ZATON</td><td class="num">383–1 914 ₽</td><td class="num">800 ₽/кг</td><td><span class="pill go">Заходить, №1</span></td></tr>
+    <tr><td>Стоп-Инсект Флай</td><td>Приманки от мух (аналог Агиты)</td><td class="r num">12,1</td><td>сезон май–сентябрь</td><td>Дезресурсы, Садовый Лекарь, Город Животных, Всё для животных. Все продают Агиту</td><td class="num">Агита 400 г — 2 942–3 934 ₽; 100 г — 1 116 ₽</td><td class="num">0,4 кг — 1 600 ₽ (на 45–60% дешевле)</td><td><span class="pill go">Заходить к сезону</span></td></tr>
+    <tr><td>Стоп-Инсект Pro</td><td>Средства на циперметрине</td><td class="r num">405</td><td>пик апрель–июнь: 70–115 млн/мес; зимой 3–5 млн</td><td>ДЕЗТОРГ 42%, DEZEA 15%, Дезресурсы 7%. Концентрированный рынок</td><td class="num">Циперметрин 250: 100 мл — 255 ₽; 1 л — 1 377 ₽</td><td class="num">1 л — 3 000 ₽ (дороже в 2 раза)</td><td><span class="pill go">Заходить с малой фасовкой</span></td></tr>
+    <tr><td>Энерджи Микс</td><td>Пропиленгликоль, энергетики от кетоза</td><td class="r num">11,6</td><td>сезон отёлов: февраль–май 1,1–1,6 млн/мес, осенью 0,5</td><td>Город Животных (Фелуцен) 91%, AGROCON 4%</td><td class="num">ПГ 10 кг — 3 261 ₽; ENERMIX 3 л — 576 ₽, 20 л — 8 327 ₽</td><td class="num">10 л — 5 000 ₽ (≈500 ₽/л, дороже)</td><td><span class="pill maybe">Условно</span></td></tr>
+    <tr><td>Спектроцид Аэро</td><td>Электролиты и антистресс</td><td class="r num">10,7</td><td>растёт: 0,5 → 0,8–1,3 млн/мес</td><td>ПремиксСнаб 26%, Horse-Bio 16%, Город Животных 13%, Мустанг 12%</td><td class="num">426–2 342 ₽</td><td class="num">от 2 100 ₽</td><td><span class="pill maybe">Условно</span></td></tr>
+    <tr><td>СпектроЦид Ультра</td><td>Подкислители воды и корма</td><td class="r num">1,5</td><td>ниша появилась в ноябре 2025 и растёт</td><td>ОРГАНИКО (Органикоцид) 79%</td><td class="num">744–3 819 ₽</td><td class="num">1 л — 360 ₽ (в 2 раза дешевле)</td><td><span class="pill go">Заходить: дёшево и быстро</span></td></tr>
+    <tr><td>Биосприн +</td><td>Кормовые дрожжи</td><td class="r num">8,7</td><td>стабильно, 0,5–1 млн/мес</td><td>АГРОНОВА 19%, ИП Минаев 14%, ИП Подушко 9%</td><td class="num">1–10 кг — 246–1 059 ₽ (неактивные дрожжи)</td><td class="num">1 750 ₽/кг (живые)</td><td><span class="pill maybe">Условно, как премиум</span></td></tr>
+    <tr><td>Стоп-Инсект (дифлубензурон)</td><td>Средства от личинок мух</td><td class="r num">0,1</td><td>спроса нет</td><td>—</td><td class="num">≈1 200 ₽</td><td class="num">4 300 ₽/кг</td><td><span class="pill maybe">Только в комплекте с Флай</span></td></tr>
+    <tr><td>Hepatron, ReaShure, БиоХол</td><td>Холин, бетаин, гепатопротекторы для с/х</td><td class="r num">0,9</td><td>спроса почти нет. Поиск по слову находит БАДы для людей</td><td>3–4 мелких продавца</td><td class="num">≈1 700–2 800 ₽</td><td class="num">25 кг за 25–45 тыс ₽</td><td><span class="pill no">Не выводить</span></td></tr>
+    <tr><td>TechnoZyme PMD</td><td>Ферменты для комбикорма</td><td class="r num">0,7</td><td>—</td><td>ПремиксСнаб ≈100%</td><td class="num">≈2 500 ₽</td><td class="num">25 кг — 37 500 ₽</td><td><span class="pill no">Не выводить</span></td></tr>
+    <tr><td>СпектроБак (жидкий, С, Хим)</td><td>Закваски и консерванты для силоса</td><td class="r num">0,3</td><td>за год продано 37 шт. одного товара</td><td>Дженерик-Агро, Агробиопрепараты</td><td class="num">3 400–4 200 ₽</td><td class="num">1 600 ₽/л; 13 200 ₽/кг</td><td><span class="pill no">Не выводить, это B2B</span></td></tr>
+    <tr><td>Bredol 683</td><td>Эмульгатор для грануляции</td><td class="r num">—</td><td>ниши нет</td><td>—</td><td>—</td><td class="num">1000 л</td><td><span class="pill no">Не выводить</span></td></tr>
+    </tbody>
+  </table>
+  </div>
+</section>
+
+<section>
+  <h2>Какую долю можно забрать и сколько это денег</h2>
+  <p class="muted">Годовой оборот на устоявшемся уровне, примерно на 9–12-й месяц после выхода, в млн ₽. Доля посчитана от объёма ниши за последние 12 месяцев. Пробиотики и дезинфекция растут, поэтому к 2027 году та же доля даст больше.</p>
+  <div class="scroll">
+  <table>
+    <thead><tr><th>Направление</th><th class="r">Ниша</th><th class="r">Доля: осторожно / база / оптимист</th><th class="r">Осторожно</th><th class="r">База</th><th class="r">Оптимист</th></tr></thead>
+    <tbody class="num">
+    <tr><td>Пробиотики (Ликвиспорин, Ликвибак, Биоспектр)</td><td class="r">15,1</td><td class="r">5 / 10 / 20%</td><td class="r">0,75</td><td class="r">1,5</td><td class="r">3,0</td></tr>
+    <tr><td>Дезинфекция (СпектроДез Окси)</td><td class="r">18,6</td><td class="r">3 / 7 / 12%</td><td class="r">0,56</td><td class="r">1,3</td><td class="r">2,2</td></tr>
+    <tr><td>Приманка от мух (Стоп-Инсект Флай)</td><td class="r">12,1</td><td class="r">5 / 12 / 20%</td><td class="r">0,6</td><td class="r">1,45</td><td class="r">2,4</td></tr>
+    <tr><td>Циперметрин (Стоп-Инсект Pro)</td><td class="r">405</td><td class="r">0,25 / 0,5 / 1%</td><td class="r">1,0</td><td class="r">2,0</td><td class="r">4,05</td></tr>
+    <tr><td>Энергетик (Энерджи Микс)</td><td class="r">11,6</td><td class="r">3 / 8 / 15%</td><td class="r">0,35</td><td class="r">0,93</td><td class="r">1,74</td></tr>
+    <tr><td>Антистресс (Спектроцид Аэро)</td><td class="r">10,7</td><td class="r">2 / 5 / 10%</td><td class="r">0,21</td><td class="r">0,54</td><td class="r">1,07</td></tr>
+    <tr><td>Подкислитель (СпектроЦид Ультра)</td><td class="r">1,5</td><td class="r">15 / 30 / 45%</td><td class="r">0,23</td><td class="r">0,45</td><td class="r">0,68</td></tr>
+    <tr><td>Живые дрожжи (Биосприн +)</td><td class="r">8,7</td><td class="r">2 / 5 / 8%</td><td class="r">0,17</td><td class="r">0,44</td><td class="r">0,7</td></tr>
+    <tr><th>Итого в год</th><th></th><th></th><th class="r">≈ 3,9</th><th class="r">≈ 8,6</th><th class="r">≈ 15,9</th></tr>
+    <tr><th>В среднем в месяц</th><th></th><th></th><th class="r">≈ 0,32</th><th class="r">≈ 0,72</th><th class="r">≈ 1,3</th></tr>
+    <tr><th>Реклама при ДРР 15–20%</th><th></th><th></th><th class="r">0,6–0,8</th><th class="r">1,3–1,7</th><th class="r">2,4–3,2</th></tr>
+    </tbody>
+  </table>
+  </div>
+  <p class="muted">Сезонность сильная. На средства от мух и циперметрин приходится около половины оборота, и почти весь он идёт с апреля по август. Зимой оборот будет в 2–3 раза ниже среднего, летом в 1,5–2 раза выше. Первые 2–3 месяца уйдут на отзывы и рейтинг, поэтому продажи там будут небольшие.</p>
+</section>
+
+<section>
+  <h2>Чем выигрываем</h2>
+  <div class="cols">
+    <div class="box"><h3>Цена производителя</h3><p>СпектроЦид Ультра стоит 360 ₽/л, Органикоцид у лидера — 744 ₽. Стоп-Инсект Флай 400 г стоит 1 600 ₽, Агита того же веса — 2 900–3 900 ₽. В приманках от мух и в подкислителях можно встать заметно дешевле лидера и при этом не уходить в ноль.</p></div>
+    <div class="box"><h3>Пустые клетки</h3><p>Средств на пероксомоносульфате (класс Виркон-С) на Ozon почти нет: лидеры продают йодные шашки и креолин. Живых дрожжей-руминаторов для коров и коз тоже нет, продают только дешёвые кормовые дрожжи.</p></div>
+    <div class="box"><h3>Профессиональный состав и документы</h3><p>У нас штаммы с номерами ВКПМ, гарантированное КОЕ, регистрационные удостоверения. У большинства конкурентов товары уровня «для подворья» с общими описаниями. Это стоит вынести в инфографику.</p></div>
+    <div class="box"><h3>Консультации зоотехника</h3><p>В штате три технических специалиста. Ответы на вопросы в карточке и чате, схемы применения «на голову в сутки» — для фермера это решающий аргумент.</p></div>
+    <div class="box"><h3>Комплекты под сезон</h3><p>«Подготовка птичника»: дезинфекция, подкислитель и пробиотик для цыплят. «Отёл»: Энерджи Микс, пробиотик и электролит. Комплекты поднимают средний чек и выделяют нас среди продавцов одного товара.</p></div>
+    <div class="box"><h3>Где проигрываем</h3><p>Нет отзывов и бренда. FBS доставляет медленнее, а почти все лидеры работают через склады Ozon (FBO). Энерджи Микс и Стоп-Инсект Pro дороже аналогов, их нужно продавать через состав и экономику на голову. Без малой фасовки заходить нельзя.</p></div>
+  </div>
+</section>
+
+<section>
+  <h2>Что сделать до запуска</h2>
+  <ul>
+    <li><b>Розничная фасовка:</b> пробиотики 100 мл / 0,5 л / 1 л и 0,5–1 кг; СпектроДез Окси 0,5–1 кг; Стоп-Инсект Pro 50–100 мл и 1 л; Энерджи Микс 3–5 л.</li>
+    <li><b>Сроки:</b> средства от мух и циперметрин должны быть на Ozon с отзывами к марту–апрелю 2027 года, Энерджи Микс к февралю (отёлы), пробиотики для цыплят к марту. Сейчас октябрь, сезон мух закончен, поэтому стартовать лучше с пробиотиков, дезинфекции и подкислителя.</li>
+    <li><b>Документы:</b> для инсектицидов и дезсредств Ozon требует свидетельство о госрегистрации и инструкцию. Для кормовых добавок нужны декларации и рег. удостоверения.</li>
+    <li><b>Ценообразование в рублях</b> для маркетплейса, без привязки к евро.</li>
+    <li><b>Переход на FBO</b> по лидерам (пробиотики, Флай, СпектроДез), как только появятся первые продажи.</li>
+  </ul>
+</section>
+
+<section>
+  <h2>Ждём от собственника</h2>
+  <ul>
+    <li>Какие товары производятся сами, а какие дистрибутируются? BioPlus, ReaShure, Hepatron, TechnoZyme и Bredol похожи на импортные бренды. Мы их всё равно не выводим, но это влияет на УТП «мы производитель».</li>
+    <li>Готовность и стоимость розничной фасовки.</li>
+    <li>Себестоимость по позициям из раздела «Заходить». После этого посчитаем юнит-экономику: комиссия, логистика FBS/FBO, ДРР 15–20%, прибыль на штуку.</li>
+  </ul>
+</section>
+
+<footer class="foot">
+  <p>Источник: SellMonitor (Ozon, FBO+FBS), оценки выручки по продажам за 12 месяцев на 07.10.2026; динамика помесячно за 11 месяцев. Ниши собраны поиском по названию в фермерских категориях Ozon с ручной проверкой лидеров. Цифры SellMonitor — оценка: используйте их как порядок величин, а не как точные значения.</p>
+  <p>Каталог: UDS App, Spectre Agro, 20 позиций, выгрузка 08.10.2026.</p>
+</footer>
+
+</div>
+</body>
+</html>
